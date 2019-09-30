@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+    <head> 
+	      <script src=".\js\three.js"></script>
+		 <script src=".\js\TrackballControls.js"></script>
+	</head>
+	<body>
+        
+		<script>
+
+
+
+var WIDTH = window.innerWidth;
+var HEIGHT = window.innerHeight;
+
+var renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(WIDTH, HEIGHT);
+renderer.setClearColor(0xDDDDDD, 1);
+document.body.appendChild(renderer.domElement);
+
+var scene = new THREE.Scene();
+
+var camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT);
+camera.position.z = 50;
+scene.add(camera);
+
+
+	cube_geometry=new THREE.CubeGeometry(30, 30, 30);
+				cube_material=new THREE.MeshNormalMaterial();
+				cube=new THREE.Mesh(cube_geometry, cube_material);
+				scene.add(cube);
+				cube.rotation.set(0.4, 0.2, 0);
+
+
+function render() {
+
+		
+    requestAnimationFrame(render);
+		cube.rotation.x += 0.01;
+			cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+		
+}
+render();
+	</script>
+	</body>
+</html>
